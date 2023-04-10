@@ -1,0 +1,7 @@
+---
+# handlers file for balancer
+- name: Start and enabled nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: true

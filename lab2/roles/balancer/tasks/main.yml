@@ -1,0 +1,19 @@
+---
+# tasks file for balancer
+- name: Install the latest version of nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: latest
+  tags:
+    - balancer
+
+- name: Template a file to /etc/nginx/nginx.conf
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+  notify:
+    - Start and enabled nginx 
+  tags:
+    - balancer

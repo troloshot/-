@@ -1,0 +1,12 @@
+---
+# tasks file for roles/selinux
+- name: Create config file from template
+  ansible.builtin.copy:
+    src: config
+    dest: /etc/selinux/config
+    owner: root
+    group: root
+  notify:
+      - reboot
+  tags:
+      - selinux

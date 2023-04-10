@@ -1,0 +1,26 @@
+
+- name: Install the latest version of NGINX
+  ansible.builtin.yum:
+    name: 
+      - nginx
+      - libselinux-python3
+    state: latest
+- name: Create config file from template
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+  notify:
+    - restart nginx  
+  tags:
+    - nginx-configuration
+
+- name: Create config file from template
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /usr/share/nginx/html/index.html
+    owner: root
+    group: root
+  tags:
+    - html

@@ -1,0 +1,17 @@
+- name: Disable selinux
+  hosts: all
+  become: true 
+  roles: 
+    - selinux-disable
+
+- name: Install nginx for webserver
+  hosts: webservers
+  become: true 
+  roles: 
+    - webserver
+
+- name: Install nginx for balancer
+  hosts: balancer
+  become: true 
+  roles: 
+    - balancer

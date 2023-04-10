@@ -1,0 +1,25 @@
+---
+# tasks file for balancer
+
+- name: Install the latest version of keepalived
+  ansible.builtin.yum:
+    name: 
+      - keepalived
+      - libselinux-python3
+    state: latest
+  tags: 
+    - keepalived
+- name: Create config file from template
+  ansible.builtin.template:
+    src: keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+    owner: root
+    group: root
+  notify:
+    - restart keepalived  
+  tags:
+    - keepalived-configuration
+    - keepalived
+
+
+

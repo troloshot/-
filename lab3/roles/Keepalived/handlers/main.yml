@@ -1,0 +1,7 @@
+---
+# handlers file for balancer
+- name: restart keepalived
+  systemd:
+    name: keepalived
+    state: restarted 
+    enabled: yes

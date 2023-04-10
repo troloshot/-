@@ -1,0 +1,21 @@
+---
+# tasks file for roles/haproxy
+- name: Install the latest version of haproxy
+  ansible.builtin.yum:
+    name: 
+      - haproxy
+      - libselinux-python3
+    state: latest
+  tags: 
+    - haproxy
+- name: Create config file from template
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+  notify:
+    - restart haproxy  
+  tags:
+    - haproxy-configuration
+    - haproxy

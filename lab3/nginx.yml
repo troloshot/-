@@ -1,0 +1,16 @@
+- name: disable selinux
+  hosts: all
+  become: true
+  roles:
+    - selinux
+- name: Install nginx package to webservers
+  hosts: webs
+  become: true
+  roles:
+    - webs
+- name: Install haproxy package to haproxy
+  hosts: haproxy-servers
+  become: true
+  roles:
+    - haproxy
+    - Keepalived

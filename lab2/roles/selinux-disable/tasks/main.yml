@@ -1,0 +1,12 @@
+---
+# tasks file for selinux-disable
+- name: Copy config 
+  copy:
+    src: config
+    dest: /etc/selinux/config
+    owner: root
+    group: root
+  notify:
+    - Reboot machine
+  tags:
+    - selinux 
