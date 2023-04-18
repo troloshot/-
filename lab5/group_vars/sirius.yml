@@ -1,0 +1,15 @@
+### global
+system_name: "sirius"
+
+### consul
+dc_name: "sirius"
+consul_ansible_group: "sirius_consul"
+
+pg_data: /pgsql/pg_data
+pg_wal: /pgsql/pg_wal
+
+patroni_log: /var/log/patroni
+
+patroni_conf: /opt/app/patroni/etc/postgresql.yml
+
+vipdb: 192.168.11.200
